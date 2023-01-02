@@ -1,3 +1,91 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+
+
+
+const managerInput = [
+
+    prompt ({
+        input: "input",
+        message: "Shat is the team manager's name?",
+        name: "name",
+    },
+    {
+        input: "input",
+        message: "Shat is the team manager'id?",
+        name: "id",
+    },{
+        input: "input",
+        message: "Shat is the team manager's email?",
+        name: "email",
+    },{
+        input: "input",
+        message: "Shat is the team manager's office number?",
+        name: "officeNumber",
+    },{
+        input: "input",
+        message: "Wich type of team member would you like to add??",
+        name: "add",
+        choices: ["Intern", "Engineer", "I don't want to add more team members"],
+    },
+)]
+.then (generateTeamMembers(managerInput));
+
+
+const internInput = [
+    prompt ({
+        input: "input",
+        message: "Shat is your intern's name?",
+        name: "name",
+    },
+    {
+        input: "input",
+        message: "Shat is your intern's id?",
+        name: "id",
+    },{
+        input: "input",
+        message: "Shat is your intern's email?",
+        name: "email",
+    },{
+        input: "input",
+        message: "What is your intern's school?",
+        name: "school",
+    },{
+        input: "input",
+        message: "Wich type of team member would you like to add??",
+        name: "add",
+        choices: ["Intern", "Engineer", "I don't want to add more team members"],
+
+    })
+]
+.then (generateTeamMembers(internInput));
+
+const engineerInput = [
+    prompt ({
+        input: "input",
+        message: "What is your engineer's name?",
+        name: "name",
+    },
+    {
+        input: "input",
+        message: "Shat is your engineer'id?",
+        name: "id",
+    },{
+        input: "input",
+        message: "Shat is your engineer's email?",
+        name: "email",
+    },{
+        input: "input",
+        message: "Shat is your engineer's GitHub username?",
+        name: "officeGitHubumber",
+    },{
+        iGitHubput: "input",
+        message: "Wich type of team member would you like to add??",
+        name: "add",
+        choices: ["Intern", "Engineer", "I don't want to add more team members"],
+    })
+]
+.then (generateTeamMembers(engineerInput));
+
+module.exports = index;
