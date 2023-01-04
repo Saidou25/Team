@@ -1,5 +1,5 @@
-const fs = require('fs')// create the team
-const team = require('../index')
+// create the team
+
 const generateTeamMembers = (team) => {
 
 };
@@ -23,7 +23,7 @@ module.exports = (team) => {
           <h2>${manager.name}</h2>
           <ul>
             <li>ID: 1</li>
-            <li>Email:  ${manager.ik}@email.com</li>
+            <li>Email:  ${manager.id}@email.com</li>
             <li>Office Number: ${manager.officeNumber}</li>
           </ul>
         </article>
