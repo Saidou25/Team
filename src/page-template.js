@@ -1,12 +1,12 @@
-// create the team
-const team = require('./')
+const fs = require('fs')// create the team
+const team = require('../index')
 const generateTeamMembers = (team) => {
 
 };
 
 // export function to generate entire page
 module.exports = (team) => {
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -19,28 +19,28 @@ module.exports = (team) => {
         <h1>My Team</h1>
       </header>
       <main>
-        <article>
-          <h2>Manager</h2>
+        <article class='card-manager'>
+          <h2>${manager.name}</h2>
           <ul>
             <li>ID: 1</li>
-            <li>Email: manager@email.com</li>
-            <li>Office Number: 123</li>
+            <li>Email:  ${manager.ik}@email.com</li>
+            <li>Office Number: ${manager.officeNumber}</li>
           </ul>
         </article>
-        <article>
+        <article class='card-engineer'>
           <h2>Engineer</h2>
           <ul>
-            <li>ID: 2</li>
-            <li>Email: engineer@email.com</li>
-            <li>GitHub: <a href="#github">person</a></li>
+            <li>ID: ${engineer.ik}</li>
+            <li>Email: ${engineer.imail}@email.com</li>
+            <li>GitHub: <a href="https://github.com/${engineer.githubUsername}">${engineer.githubUsername}</a></li>
           </ul>
         </article>
-        <article>
+        <article class='card-intern>
           <h2>Intern</h2>
           <ul>
             <li>ID: 3</li>
-            <li>Email: intern@email.com</li>
-            <li>School: FUN University</li>
+            <li>Email: ${intern.email}@email.com</li>
+            <li>School: ${intern.university}</li>
           </ul>
         </article>
       </main>
