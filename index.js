@@ -186,9 +186,10 @@ const generateEmployeeCards = () => {
             return `<article>
              <h2>Manager</h2>
              <ul>
+             <li>ID: ${teamMember.name}</li>
              <li>ID: ${teamMember.id}</li>
-             <li>Email: ${teamMember.email}</li>
-             <li>Office Number: ${teamMember.officeNumber}}</li>
+             <li>Email: ${teamMember.email}@email.com</li>
+             <li>Office Number: ${teamMember.officeNumber}</li>
              </ul>
              </article>`
         }
@@ -197,8 +198,9 @@ const generateEmployeeCards = () => {
             return `<article>
              <h2>Intern</h2>
              <ul>
+             <li>ID: ${teamMember.name}</li>
              <li>ID: ${teamMember.id}</li>
-             <li>Email: ${teamMember.email}</li>
+             <li>Email: ${teamMember.email}@email.com</li>
              <li>School: ${teamMember.school}</li>
              </ul>
              </article>`
@@ -208,9 +210,10 @@ const generateEmployeeCards = () => {
             return `<article>
              <h2>Engineer</h2>
              <ul>
+             <li>ID: ${teamMember.name}</li>
              <li>ID: ${teamMember.id}</li>
-             <li>Email: ${teamMember.email}</li>
-             <li>GitHub: <a href="#github">engineer</a></li>
+             <li>Email: ${teamMember.email}@email.com</li>
+             <li>GitHub: <a href="https://github.com/${teamMember.githubUsername}">${teamMember.githubUsername}</a></a></li>
              </ul>
              </article>`
         }
