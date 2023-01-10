@@ -2,9 +2,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-// const generateHtml = require('./src/page-template');
 const fs = require('fs');
-// const { prompt } = require("inquirer");
 const prompt = inquirer.createPromptModule();
 
 const team = [];
@@ -35,9 +33,9 @@ const managerInput = () =>
 
     ]).then(({ name, id, email, officeNumber }) => {
         const newManager = new Manager(name, id, email, officeNumber);
-        console.log(newManager);
+
         team.push(newManager);
-        console.log(team);
+
         lastQuest();
 
     })
@@ -69,9 +67,9 @@ const internInput = () =>
 
     ]).then(({ name, id, email, school }) => {
         const newIntern = new Intern(name, id, email, school);
-        console.log(newIntern);
+
         team.push(newIntern);
-        console.log(team);
+
         lastQuest();
 
 
@@ -103,7 +101,7 @@ const engineerInput = () =>
     ]).then(({ name, id, email, github }) => {
         const newEngineer = new Engineer(name, id, email, github);
         team.push(newEngineer);
-        console.log(team);
+
         lastQuest();
 
 
@@ -124,11 +122,11 @@ const lastQuest = () =>
                 internInput();
             } else if (answers.add === "Engineer") {
                 engineerInput();
-            } 
+            }
         })
-       
-            .then(generateHtml);
-            
+
+        .then(generateHtml);
+
 // ----------------------------------------------------------------------------------
 const generateHtml = () => {
     const html = `<!-- Instructor provided template -->
@@ -176,56 +174,52 @@ const generateHtml = () => {
         &copy; 2022-2023
       </footer>
     </body>
-    </html>
-    
-    
-    `
-console.log(html);
-}
+    </html>  `
 
+    writeToFile(html);
+}
 
 const generateEmployeeCards = () => {
     const card = team.map(teamMember => {
         const role = teamMember.getRole()
         if (role === "Manager") {
             return `<article>
-    <h2>Manager</h2>
-    <ul>
-      <li>ID: ${teamMember.id}</li>
-      <li>Email: ${teamMember.email}</li>
-      <li>Office Number: ${teamMember.officeNumber}}</li>
-    </ul>
-    </article>`
+             <h2>Manager</h2>
+             <ul>
+             <li>ID: ${teamMember.id}</li>
+             <li>Email: ${teamMember.email}</li>
+             <li>Office Number: ${teamMember.officeNumber}}</li>
+             </ul>
+             </article>`
+        }
+
+        else if (role === "Intern") {
+            return `<article>
+             <h2>Intern</h2>
+             <ul>
+             <li>ID: ${teamMember.id}</li>
+             <li>Email: ${teamMember.email}</li>
+             <li>School: ${teamMember.school}</li>
+             </ul>
+             </article>`
+        }
+
+        else if (role === "Engineer") {
+            return `<article>
+             <h2>Engineer</h2>
+             <ul>
+             <li>ID: ${teamMember.id}</li>
+             <li>Email: ${teamMember.email}</li>
+             <li>GitHub: <a href="#github">engineer</a></li>
+             </ul>
+             </article>`
         }
     })
     return card.join("");
-     
-}
-// generateHtml()
+};
 
+const writeToFile = (html) => {
 
-{/* <article>
-<h2>Engineer</h2>
-<ul>
-  <li>ID: 2</li>
-  <li>Email: engineer@email.com</li>
-  <li>GitHub: <a href="#github">person</a></li>
-</ul>
-</article>
-
-
-<article>
-<h2>Intern</h2>
-<ul>
-  <li>ID: 3</li>
-  <li>Email: intern@email.com</li>
-  <li>School: FUN University</li>
-</ul>
-</article> */}
-
-
-const writeToFile = (team) => {
-
-    fs.writeFileSync('team.html', team)
+    fs.writeFileSync('team.html', html)
 
 };
