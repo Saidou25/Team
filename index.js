@@ -37,11 +37,12 @@ const managerInput = () =>
         const newManager = new Manager(name, id, email, officeNumber);
         console.log(newManager);
         team.push(newManager);
+        console.log(team);
         lastQuest();
 
     })
         .catch(err => console.log(err));
-            managerInput();
+managerInput();
 
 const internInput = () =>
     prompt([
@@ -70,6 +71,7 @@ const internInput = () =>
         const newIntern = new Intern(name, id, email, school);
         console.log(newIntern);
         team.push(newIntern);
+        console.log(team);
         lastQuest();
 
 
@@ -101,6 +103,7 @@ const engineerInput = () =>
     ]).then(({ name, id, email, github }) => {
         const newEngineer = new Engineer(name, id, email, github);
         team.push(newEngineer);
+        console.log(team);
         lastQuest();
 
 
@@ -121,96 +124,105 @@ const lastQuest = () =>
                 internInput();
             } else if (answers.add === "Engineer") {
                 engineerInput();
-            } else {
-                // generate html
-            }
+            } 
         })
-
-// const generateHtml = () => {
-//     const html = `<!-- Instructor provided template -->
-//     <!DOCTYPE html>
-//     <html lang="en">
-//     <head>
-//       <meta charset="UTF-8">
-//       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//       <title>ENTER PAGE TITLE HERE</title>
-//       <!-- Minified version -->
-//       <style>
-//         @import "https://cdn.simplecss.org/simple.min.css";
+            .then(generateEmployeeCards);
+// ----------------------------------------------------------------------------------
+const generateHtml = () => {
+    const html = `<!-- Instructor provided template -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>ENTER PAGE TITLE HERE</title>
+      <!-- Minified version -->
+      <style>
+        @import "https://cdn.simplecss.org/simple.min.css";
     
-//         main {
-//           display: grid;
-//           grid-column: 1/-1;
-//           justify-items: center;
-//           grid-template-columns: 1fr 1fr 1fr;
-//           gap: 1rem;
-//           max-width: 1140px;
-//           margin: auto;
-//         }
+        main {
+          display: grid;
+          grid-column: 1/-1;
+          justify-items: center;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 1rem;
+          max-width: 1140px;
+          margin: auto;
+        }
     
-//         @media screen and (max-width: 1140px) {
-//           main {
-//             grid-template-columns: 1fr 1fr;
-//           }
-//         }
-//         @media screen and (max-width: 720px) {
-//           main {
-//             grid-template-columns: 1fr;
-//           }
-//         }
-//       </style>
-//     </head>
-//     <body>
-//       <header>
-//         <h1>My Team</h1>
-//       </header>
-//       <main>
-//     ${generateEmployeeCards()}
-//       </main>
-//       <footer>
-//         &copy; 2022-2023
-//       </footer>
-//     </body>
-//     </html>
+        @media screen and (max-width: 1140px) {
+          main {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        @media screen and (max-width: 720px) {
+          main {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <h1>My Team</h1>
+      </header>
+      <main>
+    ${generateEmployeeCards()}
+      </main>
+      <footer>
+        &copy; 2022-2023
+      </footer>
+    </body>
+    </html>
     
     
-//     `
+    `
 
-// }
-// const generateEmployeeCards = () => {
-//     const card = team.map(teamMember => {
-//         const role = teamMember.getRole()
-//         if (role === "Manager") {
-//             return `<article>
-//     <h2>Manager</h2>
-//     <ul>
-//       <li>ID: ${teamMember.id}</li>
-//       <li>Email: manager@email.com</li>
-//       <li>Office Number: 123</li>
-//     </ul>
-//     </article>`
-//         }
-//     })
-//     return card.join("");
-// }
+}
 
 
-// <article>
-// <h2>Engineer</h2>
-// <ul>
-//   <li>ID: 2</li>
-//   <li>Email: engineer@email.com</li>
-//   <li>GitHub: <a href="#github">person</a></li>
-// </ul>
-// </article>
+const generateEmployeeCards = () => {
+    const card = team.map(teamMember => {
+        const role = teamMember.getRole()
+        if (role === "Manager") {
+            return `<article>
+    <h2>Manager</h2>
+    <ul>
+      <li>ID: ${teamMember.id}</li>
+      <li>Email: ${teamMember.email}</li>
+      <li>Office Number: ${manager.officeNumber}</li>
+    </ul>
+    </article>`
+        }
+    })
+    return card.join("");
+}
+generateHtml(card.join)
 
 
-// <article>
-// <h2>Intern</h2>
-// <ul>
-//   <li>ID: 3</li>
-//   <li>Email: intern@email.com</li>
-//   <li>School: FUN University</li>
-// </ul>
-// </article>
+{/* <article>
+<h2>Engineer</h2>
+<ul>
+  <li>ID: 2</li>
+  <li>Email: engineer@email.com</li>
+  <li>GitHub: <a href="#github">person</a></li>
+</ul>
+</article>
+
+
+<article>
+<h2>Intern</h2>
+<ul>
+  <li>ID: 3</li>
+  <li>Email: intern@email.com</li>
+  <li>School: FUN University</li>
+</ul>
+</article> */}
+
+
+const writeToFile = (team) => {
+
+    fs.writeFileSync('team.html', team)
+
+};
