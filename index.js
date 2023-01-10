@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generateHtml = require('./src/page-template');
+// const generateHtml = require('./src/page-template');
 const fs = require('fs');
 // const { prompt } = require("inquirer");
 const prompt = inquirer.createPromptModule();
@@ -126,7 +126,9 @@ const lastQuest = () =>
                 engineerInput();
             } 
         })
-            .then(generateEmployeeCards);
+       
+            .then(generateHtml);
+            
 // ----------------------------------------------------------------------------------
 const generateHtml = () => {
     const html = `<!-- Instructor provided template -->
@@ -178,7 +180,7 @@ const generateHtml = () => {
     
     
     `
-
+console.log(html);
 }
 
 
@@ -191,14 +193,15 @@ const generateEmployeeCards = () => {
     <ul>
       <li>ID: ${teamMember.id}</li>
       <li>Email: ${teamMember.email}</li>
-      <li>Office Number: ${manager.officeNumber}</li>
+      <li>Office Number: ${teamMember.officeNumber}}</li>
     </ul>
     </article>`
         }
     })
     return card.join("");
+     
 }
-generateHtml(card.join)
+// generateHtml()
 
 
 {/* <article>
