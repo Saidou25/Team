@@ -223,6 +223,6 @@ const generateEmployeeCards = () => {
 
 const writeToFile = (html) => {
 
-    fs.writeFileSync('team.html', html)
+    fs.writeFileSync('team.html', html);
 
 };
