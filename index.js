@@ -94,7 +94,7 @@ const engineerInput = () =>
         },
         {
             type: "input",
-            message: "What is your enginner github?",
+            message: "What is your enginner github username?",
             name: "github",
         },
 
@@ -188,7 +188,7 @@ const generateEmployeeCards = () => {
              <ul>
              <li>ID: ${teamMember.name}</li>
              <li>ID: ${teamMember.id}</li>
-             <li>Email: ${teamMember.email}@email.com</li>
+             <li>Email: ${teamMember.email}</li>
              <li>Office Number: ${teamMember.officeNumber}</li>
              </ul>
              </article>`
@@ -200,7 +200,7 @@ const generateEmployeeCards = () => {
              <ul>
              <li>ID: ${teamMember.name}</li>
              <li>ID: ${teamMember.id}</li>
-             <li>Email: ${teamMember.email}@email.com</li>
+             <li>Email: ${teamMember.email}</li>
              <li>School: ${teamMember.school}</li>
              </ul>
              </article>`
@@ -212,7 +212,7 @@ const generateEmployeeCards = () => {
              <ul>
              <li>ID: ${teamMember.name}</li>
              <li>ID: ${teamMember.id}</li>
-             <li>Email: ${teamMember.email}@email.com</li>
+             <li>Email: ${teamMember.email}</li>
              <li>GitHub: <a href="https://github.com/${teamMember.githubUsername}">${teamMember.githubUsername}</a></a></li>
              </ul>
              </article>`
